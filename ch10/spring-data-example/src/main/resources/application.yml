@@ -1,0 +1,14 @@
+spring:
+  jpa:
+    generate-ddl: true
+  h2:
+    console:
+      enabled: true
+      settings:
+        web-allow-others: true
+example:
+  datasource:
+    jdbc-url: jdbc:h2:mem:exampleDB
+    username: sa
+    password:
+    driver-class-name: org.h2.Driver
