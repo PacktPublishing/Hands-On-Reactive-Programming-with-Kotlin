@@ -64,5 +64,11 @@ dependencies {
     // Anko
     implementation "org.jetbrains.anko:anko:0.10.4"
 
+    //Room database
+    implementation "android.arch.persistence.room:runtime:$room_version"
+    kapt "android.arch.persistence.room:compiler:$room_version"
+    implementation "android.arch.persistence.room:rxjava2:$room_version"
 
+    //Stetho
+    implementation 'com.facebook.stetho:stetho:1.5.0'
 }

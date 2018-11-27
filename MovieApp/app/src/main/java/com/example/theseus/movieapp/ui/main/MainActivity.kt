@@ -1,11 +1,11 @@
 package com.example.theseus.movieapp.ui.main
 
 import android.app.ProgressDialog
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.GridLayoutManager
 import com.example.theseus.movieapp.MovieApplication
 import com.example.theseus.movieapp.R
+import com.example.theseus.movieapp.data.db.model.Movie
 import com.example.theseus.movieapp.di.Modules.MainActivityModule
 import com.example.theseus.movieapp.ui.base.BaseActivity
 import kotlinx.android.synthetic.main.activity_main.*

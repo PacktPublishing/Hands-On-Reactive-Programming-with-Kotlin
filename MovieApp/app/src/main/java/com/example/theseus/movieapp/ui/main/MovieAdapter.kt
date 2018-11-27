@@ -9,6 +9,7 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.theseus.movieapp.R
+import com.example.theseus.movieapp.data.db.model.Movie
 import kotlin.properties.Delegates
 
 class MovieAdapter(var context: Context) : RecyclerView.Adapter<MovieAdapter.MovieViewHolder>(), AutoUpdatableAdapter {

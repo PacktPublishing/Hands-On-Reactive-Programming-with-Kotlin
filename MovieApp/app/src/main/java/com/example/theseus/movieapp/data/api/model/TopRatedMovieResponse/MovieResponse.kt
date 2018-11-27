@@ -13,7 +13,7 @@ val page: Int? = null,
 val totalPages: Int? = null,
 
     @field:SerializedName("results")
-val results: List<ResultsItem?>? = null,
+val results: List<ResultsItem>,
 
     @field:SerializedName("total_results")
 val totalResults: Int? = null

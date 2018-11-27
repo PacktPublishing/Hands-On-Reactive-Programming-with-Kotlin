@@ -2,6 +2,7 @@ package com.example.theseus.movieapp.ui.main
 
 import com.example.theseus.movieapp.data.IDataManager
 import com.example.theseus.movieapp.data.api.model.TopRatedMovieResponse.ResultsItem
+import com.example.theseus.movieapp.data.db.model.Movie
 import com.example.theseus.movieapp.ui.base.BasePresenter
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -19,14 +20,20 @@ class MainActivityPresenter<V : IMainActivityView> @Inject constructor(private v
             mDataManager
                 .fetchMoviesFromAPI()
                 .subscribeOn(Schedulers.io())
+                .map {
+                    it.results.map {
+                        it.toMovie()
+                    }
+                }
+                .doOnSuccess {
+                    mDataManager.clearMoviesFromDatabase()
+                    mDataManager.saveMoviesInDatabase(it)
+                }
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeBy(
                     onSuccess = {
-                        val movieList = it.results?.filterNotNull()?.map {
-                            it.toMovie()
-                        }
                         view?.hideProgressDialog()
-                        movieList?.let { it1 -> view?.addMoviesToList(it1) }
+                        view?.addMoviesToList(it)
                     }, onError = {
                         view?.hideProgressDialog()
                         view?.showError(it.localizedMessage)
