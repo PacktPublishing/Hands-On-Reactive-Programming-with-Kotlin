@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="fill_parent"
+              android:layout_height="fill_parent"
+              android:orientation="vertical" >
+
+    <EditText
+            android:layout_width="match_parent"
+            android:layout_height="74dp"
+            android:inputType="text"
+            android:hint="type here"
+            android:ems="10"
+            android:id="@+id/editText"/>
+
+    <Button
+            android:text="Tap here"
+            android:layout_width="match_parent"
+            android:layout_height="98dp"
+            android:id="@+id/button"/>
+
+    <LinearLayout
+                  android:layout_width="fill_parent"
+                  android:layout_height="wrap_content"
+                  android:padding="20dp"
+                  android:orientation="vertical" >
+        <TextView android:id="@+id/textViewIHeading"
+                  android:hint="output here:"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:text=""/>
+        <TextView android:id="@+id/textViewItem"
+                  android:padding="20dp"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:textSize="20dp"
+                  android:text=""/>
+    </LinearLayout>
+
+</LinearLayout>
