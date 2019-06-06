@@ -1,4 +1,4 @@
-## RCreating a REST API using Kotlin and Spring boot
+## Creating a REST API using Kotlin and Spring boot
 
 These are the code example for the Chapter 11 : Creating a REST API using Kotlin and Spring boot.
 
