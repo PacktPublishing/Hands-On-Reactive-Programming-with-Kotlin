@@ -1,10 +1,12 @@
 package com.packtpub.hands.on.reactive.kotlin.chapter12.webfluxexample
 
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Component
 import org.springframework.web.reactive.function.server.ServerRequest
 import org.springframework.web.reactive.function.server.ServerResponse.*
 import org.springframework.web.reactive.function.server.body
 import org.springframework.web.reactive.function.server.bodyToMono
+import reactor.core.publisher.onErrorResume
 import reactor.core.publisher.toMono
 
 @Component
@@ -20,5 +22,9 @@ class CustomerHandler(val customerService: CustomerService) {
   fun post(serverRequest: ServerRequest) =
     customerService.createCustomer(serverRequest.bodyToMono()).flatMap {
       created(serverRequest.uriBuilder().path("/{id}").build(it.id)).build()
+    }.onErrorResume(CustomerExistException::class) {
+      status(HttpStatus.CONFLICT).body(ErrorResponse("Conflict", it.message).toMono())
+    }.onErrorResume(Exception::class) {
+      badRequest().body(ErrorResponse("Error creating customer", it.message ?: "error").toMono())
     }
 }
